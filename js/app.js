@@ -12,7 +12,23 @@ function adicionar()
     let produto = document.getElementById('produto').value;
     let quantidade = document.getElementById('quantidade').value;
     let nomeProduto = produto.split('-')[0];
-    let valorUnitario = produto.split('R$')[1];
+    let valorUnitario = parseFloat(produto.split('R$')[1]);
+
+    //Verificar se o produto selecionado é válido
+
+    if (!produto || produto.trim() === "")
+    {
+      alert("Selecione um produto válido.");
+    }
+
+    //Verificar se a quantidade inserida é válida
+
+    if (isNaN(quantidade) || quantidade <= 0)
+    {
+      alert("Insira uma quantidade válida.");
+      
+      return;
+    }
 
     //Cálculo do preço (subtotal)
     let preco = quantidade * valorUnitario;
